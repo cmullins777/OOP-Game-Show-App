@@ -2,7 +2,9 @@
  * Project 4 - OOP Game App
  * app.js */
 
-const game = new Game;
-game.getRandomPhrase().addPhraseToDisplay();
-game.startGame();
-console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
+let game;
+let button = document.getElementById("btn__reset");
+button.addEventListener("click", function() {
+  game = new Game;
+  game.startGame();
+});
