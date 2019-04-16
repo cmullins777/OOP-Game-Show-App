@@ -16,7 +16,6 @@ class Phrase {
     displayPhrase.setAttribute("id", "phrase");
     const ul = document.createElement('ul');
     displayPhrase.appendChild(ul);
-    console.log(letters);
     letters.forEach(letter => {
       const li = document.createElement('li');
       if (letter >= 'a' && letter <= 'z') {
@@ -28,24 +27,30 @@ class Phrase {
         li.textContent="";
         $("div[id='phrase'] ul").append(li);
       }
-    });
+    });  console.log(letters);
   }
 /**
 * Checks if passed letter is in phrase
 */
   checkLetter(letter) {
-    let chosenLetter;
-//  Get all buttons and set chosenLetter to clicked button
-    this.qwerty = $("button[class='key']");
-    qwerty.addEventListener("click", function() {
-      this.chosenLetter = qwerty.innerHTML;
-    });
-//  Compare chosenLetter to letters in phrase    
+//  Compare chosenLetter to letters in phrase
     for (let i = 0; i < this.phrase.length; i++) {
-    if (this.phrase[i] === chosenLetter) {
+    if (this.phrase[i] === letter) {
      return true;
       }
     }
      return false;
+  };
+/**
+* Displays passed letter on screen after a match is found
+* @param (string) letter - Letter to display
+*/
+  showMatchedLetter(letter) {
+    let matchedLetter = document.querySelectorAll('ul li');
+    matchedLetter.forEach(match => {
+      if (match.innerHTML === letter) {
+        match.classList = 'show';
+      }
+    });
   };
 }

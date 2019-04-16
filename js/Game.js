@@ -35,10 +35,38 @@ class Game {
 /**
 * Begins game by selecting a random phrase and displaying it to user
 */
-
   startGame() {
     $("div[id='overlay']").hide();
     this.activePhrase = this.getRandomPhrase();
     this.activePhrase.addPhraseToDisplay();
   };
+/**
+* Checks for winning move
+* @return {boolean} True if game has been won, otherwise false
+*/
+  checkForWin() {
+    let win = false;
+    let unmatchedLetters = document.getElementsByClassName("hide");
+    if (unmatchedLetters.length === 0) {
+      win = true;
+    } else {
+      win = false;
+    }
+    return win;
+  };
+/**
+* Increases the value of the missed property
+* Removes a life from the scoreboard
+* Checks if player has remaining lives and ends game if player does not
+*/
+  removeLife() {
+    const life = $("li img[src='images/liveHeart.png']");
+    this.life.src = "images/lostHeart.png";
+    this.missed += 1;
+    if (this.missed > 5) {
+      this.gameOver();
+    }
+  };
 }
+
+  //  let life = document.querySelector("img[src='images/liveHeart.png']");
