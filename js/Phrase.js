@@ -30,4 +30,22 @@ class Phrase {
       }
     });
   }
+/**
+* Checks if passed letter is in phrase
+*/
+  checkLetter(letter) {
+    let chosenLetter;
+//  Get all buttons and set chosenLetter to clicked button
+    this.qwerty = $("button[class='key']");
+    qwerty.addEventListener("click", function() {
+      this.chosenLetter = qwerty.innerHTML;
+    });
+//  Compare chosenLetter to letters in phrase    
+    for (let i = 0; i < this.phrase.length; i++) {
+    if (this.phrase[i] === chosenLetter) {
+     return true;
+      }
+    }
+     return false;
+  };
 }
