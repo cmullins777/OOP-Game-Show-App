@@ -45,14 +45,13 @@ class Game {
 * @return {boolean} True if game has been won, otherwise false
 */
   checkForWin() {
-    let win = false;
+    let gameWon = false;
     let unmatchedLetters = document.getElementsByClassName("hide");
     if (unmatchedLetters.length === 0) {
-      win = true;
+      return true;
     } else {
-      win = false;
+      return false;
     }
-    return win;
   };
 /**
 * Increases the value of the missed property
@@ -73,17 +72,19 @@ class Game {
 */
   gameOver(gameWon) {
     const overlay = $("div[id='overlay']");
-    const gameOverMessage = document.querySelector("#game-over-message");
-    if (gameWon = true) {
-      overlay.show();
-      overlay.className = "win";
+    const gameOverMessage = document.getElementById("game-over-message");
+    if (gameWon) {
+      overlay.addClass('win');
       gameOverMessage.innerText = "Way To Go!";
-    } else {
       overlay.show();
-      overlay.className = "lose";
+    } else {
+      overlay.addClass('lose');
       gameOverMessage.innerHTML = "Nice try! Play again?";
+      overlay.show();
     }
   };
-}
 
-  //  let life = document.querySelector("img[src='images/liveHeart.png']");
+  handleInteraction(qwerty) {
+    console.log(qwerty);
+  };
+}

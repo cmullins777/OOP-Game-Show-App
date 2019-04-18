@@ -3,8 +3,19 @@
  * app.js */
 
 let game;
-let button = document.getElementById("btn__reset");
-button.addEventListener("click", function() {
+let resetButton = document.getElementById("btn__reset");
+resetButton.addEventListener("click", function() {
   game = new Game;
   game.startGame();
+});
+
+/**
+* Handles onscreen keyboard button clicks
+* @param (HTMLButtonElement) button - The clicked button element
+*/
+let qwerty =$("button[class='key']");
+this.qwerty.addEventListener('click', (event) => {
+  if (event.target.className === 'key') {
+    game.handleInteraction(event.target);
+  }
 });
