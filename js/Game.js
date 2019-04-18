@@ -60,11 +60,28 @@ class Game {
 * Checks if player has remaining lives and ends game if player does not
 */
   removeLife() {
-    const life = $("li img[src='images/liveHeart.png']");
-    this.life.src = "images/lostHeart.png";
+    const lifeLost = document.querySelector("img[src='images/liveHeart.png']");
     this.missed += 1;
-    if (this.missed > 5) {
+    lifeLost.src = "images/lostHeart.png";
+    if (this.missed > 4) {
       this.gameOver();
+    }
+  };
+/**
+* Displays game over message
+* @param {boolean} gameWon - Whether or not the user won the game
+*/
+  gameOver(gameWon) {
+    const overlay = $("div[id='overlay']");
+    const gameOverMessage = document.querySelector("#game-over-message");
+    if (gameWon = true) {
+      overlay.show();
+      overlay.className = "win";
+      gameOverMessage.innerText = "Way To Go!";
+    } else {
+      overlay.show();
+      overlay.className = "lose";
+      gameOverMessage.innerHTML = "Nice try! Play again?";
     }
   };
 }
