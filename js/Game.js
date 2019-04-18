@@ -84,7 +84,12 @@ class Game {
     }
   };
 
-  handleInteraction(qwerty) {
+  handleInteraction(qwerty, checkLetter) {
     console.log(qwerty);
+    this.guess = checkLetter();
+    if (guess = true) {
+      qwerty.disabled = true;
+      qwerty.className = 'chosen';
+    }
   };
 }
