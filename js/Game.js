@@ -74,11 +74,11 @@ class Game {
     this.guess = game.activePhrase.checkLetter(letter);
     console.log(this.guess);
 
-    if (this.guess = false) {
-      qwerty.classList.add('wrong');
+    if (this.guess == false) {
+      button.classList.add('wrong');
       game.removeLife();
-    } else if (this.guess = true) {
-      qwerty.className = 'chosen';
+    } else if (this.guess == true) {
+      button.classList.add('chosen');
       game.activePhrase.showMatchedLetter();
 //      let win = game.checkForWin();
 //        if (win = true) {
