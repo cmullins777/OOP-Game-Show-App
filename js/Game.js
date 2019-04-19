@@ -66,6 +66,26 @@ class Game {
       this.gameOver();
     }
   };
+
+  handleInteraction(button) {
+    console.log(button);
+    let letter = button.innerHTML;
+    this.guess = game.activePhrase.checkLetter(letter);
+    console.log(this.guess);
+
+    if (this.guess = false) {
+      this.qwerty.className = 'wrong';
+      game.removeLife();
+    } else if (this.guess = true) {
+      qwerty.className = 'chosen';
+      game.activePhrase.showMatchedLetter();
+//      let win = game.checkForWin();
+//        if (win = true) {
+//          game.gameOver();
+//        }
+     }
+  };
+
 /**
 * Displays game over message
 * @param {boolean} gameWon - Whether or not the user won the game
@@ -81,15 +101,6 @@ class Game {
       overlay.addClass('lose');
       gameOverMessage.innerHTML = "Nice try! Play again?";
       overlay.show();
-    }
-  };
-
-  handleInteraction(qwerty, checkLetter) {
-    console.log(qwerty);
-    this.guess = checkLetter();
-    if (guess = true) {
-      qwerty.disabled = true;
-      qwerty.className = 'chosen';
     }
   };
 }

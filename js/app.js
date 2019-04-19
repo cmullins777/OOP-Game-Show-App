@@ -14,7 +14,7 @@ resetButton.addEventListener("click", function() {
 * @param (HTMLButtonElement) button - The clicked button element
 */
 let qwerty =$("button[class='key']");
-this.qwerty.addEventListener('click', (event) => {
+let button = this.qwerty.addEventListener('click', (event) => {
   if (event.target.className === 'key') {
     game.handleInteraction(event.target);
   }
