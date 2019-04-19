@@ -70,6 +70,7 @@ class Game {
   handleInteraction(button) {
     console.log(button);
     let letter = button.innerHTML;
+    console.log(letter);
     this.guess = game.activePhrase.checkLetter(letter);
     console.log(this.guess);
 
