@@ -74,7 +74,7 @@ class Game {
     console.log(this.guess);
 
     if (this.guess = false) {
-      this.qwerty.className = 'wrong';
+      qwerty.classList.add('wrong');
       game.removeLife();
     } else if (this.guess = true) {
       qwerty.className = 'chosen';
