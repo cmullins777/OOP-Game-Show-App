@@ -5,6 +5,9 @@
 let game;
 let resetButton = document.getElementById("btn__reset");
 resetButton.addEventListener("click", function() {
+//  let li = this.letters;
+//  $("div[id='phrase'] ul").remove(li);
+  
   game = new Game;
   game.startGame();
 });

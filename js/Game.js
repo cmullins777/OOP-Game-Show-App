@@ -45,7 +45,7 @@ class Game {
 * @return {boolean} True if game has been won, otherwise false
 */
   checkForWin() {
-    let gameWon = false;
+//    let win = false;
     let unmatchedLetters = document.getElementsByClassName("hide");
     if (unmatchedLetters.length === 0) {
       return true;
@@ -61,9 +61,10 @@ class Game {
   removeLife() {
     const lifeLost = document.querySelector("img[src='images/liveHeart.png']");
     this.missed += 1;
-    lifeLost.src = "images/lostHeart.png";
+    lifeLost.src="images/lostHeart.png";
     if (this.missed > 4) {
-      this.gameOver();
+      let gameWon = false;
+      this.gameOver(gameWon);
     }
   };
 
@@ -79,11 +80,12 @@ class Game {
       game.removeLife();
     } else if (this.guess == true) {
       button.classList.add('chosen');
-      game.activePhrase.showMatchedLetter();
-//      let win = game.checkForWin();
-//        if (win = true) {
-//          game.gameOver();
-//        }
+      game.activePhrase.showMatchedLetter(letter);
+      this.win = game.checkForWin();
+        if (this.win == true) {
+          let gameWon = true;
+          return game.gameOver(gameWon);
+        }
      }
   };
 
@@ -94,14 +96,35 @@ class Game {
   gameOver(gameWon) {
     const overlay = $("div[id='overlay']");
     const gameOverMessage = document.getElementById("game-over-message");
-    if (gameWon) {
+    if (gameWon == true) {
       overlay.addClass('win');
+      overlay.backgroundColor='#78CF82';
       gameOverMessage.innerText = "Way To Go!";
       overlay.show();
-    } else {
+    } else if (gameWon == false) {
       overlay.addClass('lose');
       gameOverMessage.innerHTML = "Nice try! Play again?";
       overlay.show();
     }
+      this.gameReset();
   };
+
+  gameReset() {
+    let tiles = document.querySelectorAll("ul li");
+    tiles.forEach(tile => {
+      tile.remove();
+    });
+
+    let buttons = document.querySelectorAll(".key");
+    buttons.forEach(button => {
+      button.removeAttribute('disabled');
+      button.classList.remove('wrong', 'chosen');
+    });
+    this.missed = 0;
+    let lifeLost = document.querySelectorAll("img[src='images/lostHeart.png']");
+    lifeLost.forEach(life => {
+      life.src="images/liveHeart.png";
+    });
+  }
+
 }
