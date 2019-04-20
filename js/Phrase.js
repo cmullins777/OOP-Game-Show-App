@@ -8,6 +8,7 @@ class Phrase {
   }
 /**
  * Display phrase on game board
+ * Creates li for each letter in phrase and appends to ul, div
  **/
   addPhraseToDisplay() {
     const letters = [...this.phrase];
@@ -27,10 +28,11 @@ class Phrase {
         li.textContent="";
         $("div[id='phrase'] ul").append(li);
       }
-    });  console.log(letters);
+    }); // console.log(letters);
   }
 /**
 * Checks if passed letter is in phrase
+* @param (string) letter = Letter to check
 */
   checkLetter(letter) {
 //  Compare chosenLetter to letters in phrase

@@ -27,7 +27,6 @@ class Game {
 * Selects random phrase from phrases property
 * @return {Object} Phrase object chosen to be used
 */
-
   getRandomPhrase() {
     let phrase = this.phrases[Math.floor(Math.random() * this.phrases.length)];
     return phrase;
@@ -45,7 +44,6 @@ class Game {
 * @return {boolean} True if game has been won, otherwise false
 */
   checkForWin() {
-//    let win = false;
     let unmatchedLetters = document.getElementsByClassName("hide");
     if (unmatchedLetters.length === 0) {
       return true;
@@ -67,13 +65,16 @@ class Game {
       this.gameOver(gameWon);
     }
   };
-
+/**
+* Handles onscreen keyboard button clicks
+* @param (HTMLButtonElement) button - The clicked button element
+*/
   handleInteraction(button) {
-    console.log(button);
+//    console.log(button);
     let letter = button.innerHTML;
-    console.log(letter);
+//    console.log(letter);
     this.guess = game.activePhrase.checkLetter(letter);
-    console.log(this.guess);
+//    console.log(this.guess);
 
     if (this.guess == false) {
       button.classList.add('wrong');
@@ -108,18 +109,19 @@ class Game {
     }
       this.gameReset();
   };
-
+// Removes previous phrase tiles from board
   gameReset() {
     let tiles = document.querySelectorAll("ul li");
     tiles.forEach(tile => {
       tile.remove();
     });
-
+// Enables disabled buttons and removes selected classes
     let buttons = document.querySelectorAll(".key");
     buttons.forEach(button => {
       button.removeAttribute('disabled');
       button.classList.remove('wrong', 'chosen');
     });
+// Restores heart images and sets missed count to zero
     this.missed = 0;
     let lifeLost = document.querySelectorAll("img[src='images/lostHeart.png']");
     lifeLost.forEach(life => {
