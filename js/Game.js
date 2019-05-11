@@ -100,7 +100,7 @@ class Game {
     if (gameWon == true) {
       overlay.addClass('win');
       overlay.backgroundColor='#78CF82';
-      gameOverMessage.innerText = "Way To Go!";
+      gameOverMessage.innerText = "Way To Go! Play again?";
       overlay.show();
     } else if (gameWon == false) {
       overlay.addClass('lose');
